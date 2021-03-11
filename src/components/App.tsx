@@ -1,12 +1,23 @@
 import React from 'react';
 import './App.css';
+import './TutorialViewer';
+import TutorialViewer from './TutorialViewer';
 
 type AppState = {
 }
 
-const exampleDoc = `from microbit import *
+const exampleDoc = `
+# Title
 
-display.show(1)`;
+Lorem ipsum
+
+~~~py
+from microbit import *
+display.show(1)
+~~~
+
+More explanation
+`;
 
 class App extends React.Component<unknown, AppState> {
   constructor(props: unknown) {
@@ -25,7 +36,7 @@ class App extends React.Component<unknown, AppState> {
           <button className="App-button">Reboot</button>
         </header>
         <div className="App-textareas">
-          <textarea readOnly value={exampleDoc} className="App-doc"></textarea>
+          <TutorialViewer className="App-doc" markdown={exampleDoc}/>
           <textarea className="App-editor"></textarea>
         </div>
       </div>
